@@ -28,11 +28,12 @@ return require('packer').startup(function(use)
   -- snippets
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
-  -- syntax highlight
+  -- syntax highlighting
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
   }
   use 'nvim-treesitter/nvim-treesitter-refactor'
-
+  use 'p00f/nvim-ts-rainbow'
+  use 'windwp/nvim-ts-autotag'
 end)

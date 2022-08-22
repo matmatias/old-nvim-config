@@ -20,18 +20,21 @@ wk.register({
   }
 }, { prefix = "<leader>" })
 
+-- identation
 map('v', '<', '<gv', opts) -- indent left
 map('v', '>', '>gv', opts) -- indent right
+
+-- line movement
 map('v', 'J', ":m '>+1<CR>==gv", opts) -- swap 1 line down
 map('v', 'K', ":m '<-2<CR>==gv", opts) -- swap 1 line up
 
--- window mappings
+-- windows
 map('n', '<C-h>', '<C-w>h', opts) -- go to left window
 map('n', '<C-l>', '<C-w>l', opts) -- go to right window 
 map('n', '<C-j>', '<C-w>j', opts) -- go to right window 
 map('n', '<C-k>', '<C-w>k', opts) -- go to right window 
 
--- tab mappings
+-- tabs
 map('n', '<S-h>', 'gT', opts) -- go to previous tab
 map('n', '<S-l>', 'gt', opts) -- go to next tab
 
