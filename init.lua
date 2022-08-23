@@ -6,6 +6,10 @@ require('nvim-tree-config')
 require('lualine-config')
 
 require('lsp-config.nvim-cmp')
+-- Mason
+require('lsp-config.mason')
+require('lsp-config.null-ls')
+
 require('treesitter-config')
 
 require('which-key-config')

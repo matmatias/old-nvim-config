@@ -4,8 +4,8 @@ local wk = require("which-key")
 
 vim.g.mapleader = ' '
 
--- lsp actions
 wk.register({
+  -- lsp actions
   w = { "<cmd>w<cr>", "Save File" },
   q = { "<cmd>quitall<cr>", "Quit Neovim"},
   r = { "<cmd>luafile %<cr>", "Reload File"},
@@ -17,6 +17,13 @@ wk.register({
     ["<S-Tab>"] = { vim.diagnostic.goto_prev, "Move to prev diagnostic" },
     ["<Tab>"] = { vim.diagnostic.goto_next, "Move to next diagnostic" },
     l = { vim.diagnostic.setloclist, "Add buffer diagnostic to location list" }
+  },
+  -- Find (telescope)
+  f = { "<cmd>Telescope find_files<cr>", "Search File" },
+  s = {
+    name = "+Search",
+    t = { "<cmd>Telescope live_grep<cr>", "Text" },
+    b = { "<cmd>Telescope buffers<cr>", "Buffers" },
   }
 }, { prefix = "<leader>" })
 

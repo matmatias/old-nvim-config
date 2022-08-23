@@ -9,6 +9,14 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-tree.lua'
   -- lspconfig
   use 'neovim/nvim-lspconfig'
+  -- mason
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "mfussenegger/nvim-dap",
+    "jose-elias-alvarez/null-ls.nvim"
+  }
+  
   -- which key
   use "folke/which-key.nvim"
   -- autocompletion
@@ -36,4 +44,13 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-refactor'
   use 'p00f/nvim-ts-rainbow'
   use 'windwp/nvim-ts-autotag'
+  -- telescope and dependencies
+  use 'nvim-lua/plenary.nvim'
+  use 'BurntSushi/ripgrep'
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use 'sharkdp/fd'
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 end)
