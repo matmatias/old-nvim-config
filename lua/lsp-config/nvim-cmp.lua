@@ -1,13 +1,8 @@
 local cmp = require'cmp'
 local lspkind = require('lspkind')
 local wk = require("which-key")
-local opts = { noremap=true, slient=true }
 
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  wk.register({
+local keymappings = {
     d = { vim.lsp.buf.definition, "Jump to definition" },
     h = { vim.lsp.buf.hover, "Display information"},
     i = { vim.lsp.buf.implementation, "List all implementations" },
@@ -15,7 +10,15 @@ local on_attach = function(client, bufnr)
     t = { vim.lsp.buf.type_definition, "Jump to type definition" },
     r = { vim.lsp.buf.rename, "Rename" } ,
     f = { vim.lsp.buf.formatting, "Format File" },
-  }, { prefix = "<leader>L" })
+}
+
+local keymap_prefix = { prefix = "<leader>L" }
+
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  wk.register(keymappings, keymap_prefix)
 end
 
 local lsp_flags = {
@@ -108,9 +111,42 @@ cmp.setup.cmdline(':', {
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+
+require('lspconfig')['sumneko_lua'].setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim", "augroup" }
+      }
+    }
+  },
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags
+}
+
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities,
   on_attach = on_attach,
+  flags = lsp_flags
+}
+
+require('lspconfig')['sqls'].setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags
+}
+
+require('lspconfig')['tsserver'].setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    wk.register(keymappings, keymap_prefix)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    if client.name == "tsserver" then
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+    end
+  end,
   flags = lsp_flags
 }
