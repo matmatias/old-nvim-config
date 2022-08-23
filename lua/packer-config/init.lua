@@ -16,7 +16,6 @@ return require('packer').startup(function(use)
     "mfussenegger/nvim-dap",
     "jose-elias-alvarez/null-ls.nvim"
   }
-  
   -- which key
   use "folke/which-key.nvim"
   -- autocompletion
