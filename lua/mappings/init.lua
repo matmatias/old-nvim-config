@@ -11,12 +11,20 @@ wk.register({
   r = { "<cmd>luafile %<cr>", "Reload File"},
   h = { "<cmd>noh<cr>", "Remove search highlight"},
   e = { "<cmd>NvimTreeToggle<cr>", "Open File Tree"},
-  L = {
+  l = {
     name = "+LSP Actions",
     D = { vim.diagnostic.open_float, "Show diagnostic" },
     ["<S-Tab>"] = { vim.diagnostic.goto_prev, "Move to prev diagnostic" },
     ["<Tab>"] = { vim.diagnostic.goto_next, "Move to next diagnostic" },
-    l = { vim.diagnostic.setloclist, "Add buffer diagnostic to location list" }
+    ["i"] = { "<cmd>LspInfo<cr>", "Lsp Information"}
+  },
+  -- Plugins
+  p = {
+    name = "+Plugins",
+    s = { "<cmd>PackerSync<cr>", "Sync"},
+    i = { "<cmd>PackerInstall<cr>", "Install" },
+    ["S"] = { "<cmd>PackerStatus<cr>", "Status"},
+    u = { "<cmd>PackerUninstall<cr>", "Uninstall"}
   },
   -- Find (telescope)
   f = { "<cmd>Telescope find_files<cr>", "Search File" },
@@ -47,4 +55,3 @@ map('n', '<S-l>', 'gt', opts) -- go to next tab
 
 -- map('v', '<leader>a', '<Plug>(comment_toggle_blockwise)', opts)
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts) -- togle file tree
-map('n', '<leader>Ps', ':PackerSync<CR>', opts) -- sync plugins
