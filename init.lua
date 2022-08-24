@@ -3,6 +3,7 @@ require('mappings')
 require('colorschemes.gruvbox')
 require('nvim-tree-config')
 require('autopairs')
+require('shade-config')
 
 require('lualine-config')
 
