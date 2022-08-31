@@ -53,5 +53,4 @@ map('n', '<C-k>', '<C-w>k', opts) -- go to right window
 map('n', '<S-h>', 'gT', opts) -- go to previous tab
 map('n', '<S-l>', 'gt', opts) -- go to next tab
 
--- map('v', '<leader>a', '<Plug>(comment_toggle_blockwise)', opts)
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts) -- togle file tree

@@ -1,3 +1,5 @@
+local wk = require("which-key")
+
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = {
@@ -45,7 +47,7 @@ require'nvim-treesitter.configs'.setup {
       }
     }
   },
-  
+
   rainbow = {
     enable = true,
     disable = { "txt", "md" },
@@ -55,5 +57,17 @@ require'nvim-treesitter.configs'.setup {
 
   autotag = {
     enable = true
+  },
+
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false
   }
 }
+
+-- comment
+require('Comment').setup {
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+}
+
+require('nvim-ts-autotag').setup()
