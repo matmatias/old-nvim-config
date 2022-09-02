@@ -10,6 +10,7 @@ local keymappings = {
     t = { vim.lsp.buf.type_definition, "Jump to type definition" },
     r = { vim.lsp.buf.rename, "Rename" } ,
     f = { vim.lsp.buf.formatting, "Format File" },
+    a = { vim.lsp.buf.code_action, "Code Action"}
 }
 
 local keymap_prefix = { prefix = "<leader>L" }

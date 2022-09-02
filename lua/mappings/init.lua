@@ -11,7 +11,7 @@ wk.register({
   r = { "<cmd>luafile %<cr>", "Reload File"},
   h = { "<cmd>noh<cr>", "Remove search highlight"},
   e = { "<cmd>NvimTreeToggle<cr>", "Open File Tree"},
-  l = {
+  L = {
     name = "+LSP Actions",
     D = { vim.diagnostic.open_float, "Show diagnostic" },
     ["<S-Tab>"] = { vim.diagnostic.goto_prev, "Move to prev diagnostic" },
@@ -48,8 +48,13 @@ map('n', '<C-h>', '<C-w>h', opts) -- go to left window
 map('n', '<C-l>', '<C-w>l', opts) -- go to right window 
 map('n', '<C-j>', '<C-w>j', opts) -- go to right window 
 map('n', '<C-k>', '<C-w>k', opts) -- go to right window 
+map('n', '<C-Up>', ':resize -2<CR>', opts)
+map('n', '<C-Down>', ':resize +2<CR>', opts)
+map('n', '<C-Left>', ':vertical resize +2<CR>', opts)
+map('n', '<C-Right>', ':vertical resize -2<CR>', opts)
 
 -- tabs
+map('n', '<C-t>', ':tabnew<CR>', opts) -- go to previous tab
 map('n', '<S-h>', 'gT', opts) -- go to previous tab
 map('n', '<S-l>', 'gt', opts) -- go to next tab
 
