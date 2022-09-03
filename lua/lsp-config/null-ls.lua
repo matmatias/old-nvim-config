@@ -41,7 +41,9 @@ null_ls.setup({
         formatting.prettier,
         diagnostics.eslint,
         -- python --
-        formatting.black
+        formatting.black,
+        -- rust --
+        formatting.rustfmt
     },
     -- format on save
     on_attach = function(client, bufnr)
